@@ -1,0 +1,8 @@
+.env
+data/app.db
+__pycache__/
+.pytest_cache/
+.venv
+.venv-working
+.venv-model-inspection
+.venv-incompatible-sklearn-1.9.1

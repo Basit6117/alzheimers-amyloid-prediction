@@ -1,0 +1,6 @@
+INFO:     127.0.0.1:51019 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51020 - "GET /static/styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51021 - "GET /static/app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51022 - "POST /api/predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51023 - "POST /api/predict HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:51024 - "POST /api/predict HTTP/1.1" 422 Unprocessable Content

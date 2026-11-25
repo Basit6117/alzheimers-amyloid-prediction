@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Preclinical Alzheimer's Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css?v=20261105-2">
+  </head>
+  <body>
+    <header class="site-header"><div class="site-header__content"><a class="brand" href="/" aria-label="NeuroRisk home"><span class="brand__mark" aria-hidden="true"></span><span class="brand__name">NeuroRisk</span><span class="brand__tagline">Preclinical Alzheimer's screening</span></a></div></header>
+    <main class="app-shell">
+      <section class="entry-view" id="entry-view" aria-labelledby="diagnostic-heading">
+        <div class="entry-view__intro"><h1 id="diagnostic-heading" tabindex="-1">Screening profile</h1><p>Enter the requested biomarker and background values for this screening result.</p></div>
+        <div class="entry-layout">
+          <section class="panel entry-form-panel" aria-labelledby="form-heading">
+            <div class="panel-heading-row"><div><h2 class="panel__heading" id="form-heading">Enter screening values</h2><p class="panel__subtitle">All six fields are required.</p></div></div>
+            <form class="prediction-form" id="predict-form" novalidate>
+              <div class="compact-fields">
+                <div class="form-field"><label for="pT217_F">pT217_F</label><input id="pT217_F" name="pT217_F" type="number" step="any" min="0.030" max="1.938" required aria-describedby="pT217_F-range pT217_F-error"><p class="field-range" id="pT217_F-range">Range: 0.030-1.938</p><p class="field-error" id="pT217_F-error" aria-live="polite"></p></div>
+                <div class="form-field"><label for="AB42_AB40_F">Aβ42/Aβ40 ratio</label><input id="AB42_AB40_F" name="AB42_AB40_F" type="number" step="any" min="0.0615" max="0.1323" required aria-describedby="AB42_AB40_F-range AB42_AB40_F-error"><p class="field-range" id="AB42_AB40_F-range">Range: 0.0615-0.1323</p><p class="field-error" id="AB42_AB40_F-error" aria-live="polite"></p></div>
+                <div class="form-field"><label for="GFAP_Q">GFAP_Q</label><input id="GFAP_Q" name="GFAP_Q" type="number" step="any" min="33.1" max="430.7" required aria-describedby="GFAP_Q-range GFAP_Q-error"><p class="field-range" id="GFAP_Q-range">Range: 33.1-430.7</p><p class="field-error" id="GFAP_Q-error" aria-live="polite"></p></div>
+                <div class="form-field"><label for="APOE4">APOE ε4</label><select id="APOE4" name="APOE4" required aria-describedby="APOE4-range APOE4-error"><option value="">Select status</option><option value="0">0 - non-carrier</option><option value="1">1 - carrier</option></select><p class="field-range" id="APOE4-range">Range: 0-1</p><p class="field-error" id="APOE4-error" aria-live="polite"></p></div>
+                <div class="form-field"><label for="AGE">Age</label><input id="AGE" name="AGE" type="number" step="any" min="51.014374" max="91.137577" required aria-describedby="AGE-range AGE-error"><p class="field-range" id="AGE-range">Range: 51.014374-91.137577</p><p class="field-error" id="AGE-error" aria-live="polite"></p></div>
+                <div class="form-field"><label for="SEX">Sex</label><select id="SEX" name="SEX" required aria-describedby="SEX-range SEX-error"><option value="">Select code</option><option value="0">0 - female</option><option value="1">1 - male</option></select><p class="field-range" id="SEX-range">Range: 0-1</p><p class="field-error" id="SEX-error" aria-live="polite"></p></div>
+              </div>
+              <div class="form-actions"><button class="button button--primary" type="submit">Predict screening result</button><button class="button button--secondary" id="reset-button" type="button">Reset</button></div>
+            </form><p class="screening-disclaimer">Screening aid, not a diagnosis.</p>
+          </section>
+          <aside class="chat-host" id="entry-chat-host" aria-label="Educational chatbot"></aside>
+        </div>
+      </section>
+      <section class="results-view" id="results-view" hidden aria-labelledby="results-title" tabindex="-1">
+        <div class="results-summary"><div><p class="eyebrow">Your screening result</p><h1 id="results-title">Preclinical risk overview</h1><p id="results-summary-text">Your screening result is ready.</p></div><button class="button button--secondary" id="new-screening-button" type="button">Start a new screening</button></div>
+        <div class="results-layout"><div class="results-main"><div class="results-cards">
+          <section class="panel risk-card" aria-labelledby="risk-heading"><h2 class="card-title" id="risk-heading">Preclinical risk</h2><div class="risk-gauge" aria-label="Model probability gauge"><svg viewBox="0 0 200 112" role="img" aria-hidden="true"><path class="gauge-track" d="M 20 100 A 80 80 0 0 1 180 100"></path><path class="gauge-progress" id="gauge-progress" d="M 20 100 A 80 80 0 0 1 180 100"></path></svg><p class="risk-gauge__value" id="dashboard-probability">0%</p><p class="risk-gauge__caption">Model probability</p></div><p class="risk-badge" id="dashboard-category">Screening result</p><p class="risk-description" id="dashboard-meaning"></p><p class="screening-disclaimer">Screening aid, not a diagnosis.</p></section>
+          <section class="panel factor-card" aria-labelledby="factor-heading"><h2 class="card-title" id="factor-heading">Top contributing factors</h2><div class="factor-list" id="factor-list"></div></section>
+        </div><section class="panel biomarker-card" aria-labelledby="biomarker-heading"><h2 class="card-title" id="biomarker-heading">Screening values</h2><p class="panel__subtitle">Values submitted for this prediction. They are not stored by this application.</p><div class="value-table-wrap"><table class="value-table"><thead><tr><th scope="col">Input</th><th scope="col">Value</th></tr></thead><tbody id="submitted-values"></tbody></table></div></section></div>
+          <aside class="chat-host" id="result-chat-host" aria-label="Educational chatbot"></aside>
+        </div>
+      </section>
+    </main>
+    <section class="panel chatbot-panel" id="chat-panel" aria-labelledby="chat-panel-heading">
+        <div><h2 class="panel__heading" id="chat-panel-heading">Educational chatbot</h2></div>
+        <div class="chat-log" id="chat-log" aria-live="polite" aria-label="Educational chatbot messages">
+          <article class="chat-message chat-message--assistant"><p>Ask about preclinical Alzheimer's, amyloid, or blood biomarkers.</p></article>
+          <div class="chat-starters chat-starters--in-log" aria-label="Suggested questions">
+            <button type="button" data-chat-question="What is preclinical Alzheimer's?">What is preclinical Alzheimer's?</button>
+            <button type="button" data-chat-question="What does amyloid mean?">What does amyloid mean?</button>
+            <button type="button" data-chat-question="What are blood biomarkers?">What are blood biomarkers?</button>
+          </div>
+        </div>
+        <form class="chat-form" id="chat-form">
+          <label class="screen-reader-only" for="chat-message">Ask a general educational question</label>
+          <textarea id="chat-message" name="message" rows="1" maxlength="2000" placeholder="Ask a general question..." required></textarea>
+          <button class="button button--primary" id="chat-send" type="submit">Send</button>
+        </form>
+        <p class="chat-preview__footer">Educational information, not medical advice.</p>
+    </section>
+    <script src="/static/app.js?v=20261105-2" defer></script>
+    <script>
+      (() => {
+        function compactLegacySources() {
+          document.querySelectorAll(".source-chips").forEach((sourceList) => {
+            if (sourceList.querySelector(".source-reference")) return;
+            const groups = new Map();
+            sourceList.querySelectorAll("span").forEach((chip) => {
+              const match = chip.textContent.match(/^(.*?)\s+·\s+p\.\s*(\d+)$/);
+              if (!match) return;
+              const [documentName, page] = [match[1], Number(match[2])];
+              const pages = groups.get(documentName) || [];
+              if (!pages.includes(page)) pages.push(page);
+              groups.set(documentName, pages);
+            });
+            if (!groups.size) return;
+            sourceList.replaceChildren();
+            groups.forEach((pages, documentName) => {
+              const readable = /^BloodBiomarkerstoDetectAlzheimerDisease/i.test(documentName)
+                ? "Blood biomarkers & Alzheimer's"
+                : documentName.replace(/\.pdf$/i, "").replace(/([a-z])([A-Z])/g, "$1 $2").trim();
+              const label = readable.length > 30 ? `${readable.slice(0, 29).trimEnd()}…` : readable;
+              const reference = document.createElement("span");
+              reference.className = "source-reference";
+              reference.textContent = `Source · ${label} · pp. ${pages.sort((a, b) => a - b).join(", ")}`;
+              reference.title = `${documentName} · pp. ${pages.join(", ")}`;
+              sourceList.append(reference);
+            });
+          });
+        }
+        new MutationObserver(compactLegacySources).observe(document.body, { childList: true, subtree: true });
+        compactLegacySources();
+      })();
+    </script>
+  </body>
+</html>

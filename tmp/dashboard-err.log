@@ -1,0 +1,13 @@
+INFO:     Started server process [12488]
+INFO:     Waiting for application startup.
+INFO:     scikit-learn version: 1.6.1
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8002 (Press CTRL+C to quit)
+WARNING:  Gemini model gemini-3.5-flash-lite failed with HTTP 503
+WARNING:  Gemini model gemini-3.5-flash-lite failed with HTTP 503
+WARNING:  Gemini model gemini-3.5-flash-lite failed with HTTP 503
+WARNING:  Gemini model gemini-3.5-flash-lite failed with HTTP 503
+INFO:     Falling back from Gemini model gemini-3.5-flash-lite
+WARNING:  Gemini model gemini-3.7-flash failed with HTTP 503
+WARNING:  Gemini model gemini-3.7-flash failed with HTTP 503
+WARNING:  Gemini model gemini-3.5-flash-lite failed with HTTP 503

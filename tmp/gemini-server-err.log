@@ -1,0 +1,10 @@
+INFO:     Started server process [10168]
+INFO:     Waiting for application startup.
+INFO:     scikit-learn version: 1.6.1
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+WARNING:  Gemini model gemini-3.5-flash-lite had a network or timeout error
+WARNING:  Gemini model gemini-3.5-flash-lite had a network or timeout error
+INFO:     Falling back from Gemini model gemini-3.5-flash-lite
+WARNING:  Gemini model gemini-3.7-flash had a network or timeout error
+WARNING:  Gemini model gemini-3.7-flash had a network or timeout error

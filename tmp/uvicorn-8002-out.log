@@ -1,0 +1,13 @@
+INFO:     127.0.0.1:64808 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64813 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65424 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65424 - "GET /static/styles.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:65488 - "GET /static/app.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62124 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57980 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56086 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56086 - "GET /static/styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58210 - "GET /static/app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58210 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58210 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56389 - "POST /api/chat HTTP/1.1" 200 OK
